@@ -117,17 +117,56 @@ window.onload = function(){
 
   var mode = 1;
   var count = 0;
-  var update = function() {
-      if(grid[ant.x][ant.y]) {
-          rotateAnt(1);
-      } else {
-          rotateAnt(-1);
-      }
-      var x = ant.x;
-      var y = ant.y;
-      grid[x][y] = !grid[x][y]
-      moveAnt(1);    
-      updateCells(x,y,ant.x,ant.y);
+  var updateForward = function() {
+    if(grid[ant.x][ant.y]) {
+      rotateAnt(1);
+    } else {
+      rotateAnt(-1);
+    }
+    var x = ant.x;
+    var y = ant.y;
+    grid[x][y] = !grid[x][y];
+    moveAnt(1);
+    updateCells(x,y,ant.x,ant.y);
   }
-  var x = window.setInterval(update,0);
+  
+  var updateBack = function() {
+    var x = ant.x;
+    var y = ant.y;
+    moveAnt(-1);
+    if(grid[ant.x][ant.y]) {
+      rotateAnt(1);
+    } else {
+      rotateAnt(-1);
+    }
+    grid[ant.x][ant.y] = !grid[ant.x][ant.y];
+    updateCells(x,y,ant.x,ant.y);
+  }
+  
+  var timeout;
+  var forward = function(){
+    if(timeout !== undefined) { return; }
+    timeout = window.setInterval(updateForward,0)
+  };
+  
+  var stop = function(){
+    clearTimeout(timeout);
+    timeout = undefined;
+  };
+  
+  var backward = function(){
+    if(timeout !== undefined) { return; }
+    timeout = window.setInterval(updateBack,0)
+  
+  };
+  
+  $("#forward").click(forward);
+  $("#backward").click(backward);
+  $("#stop").click(stop);
 };
+
+
+
+
+
+
