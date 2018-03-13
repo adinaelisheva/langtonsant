@@ -146,18 +146,23 @@ window.onload = function(){
   var timeout;
   var forward = function(){
     if(timeout !== undefined) { return; }
-    timeout = window.setInterval(updateForward,0)
+    timeout = window.setInterval(updateForward,0);
+    $("#forward").addClass('running');
+    $("#backward").addClass('disabled');
   };
   
   var stop = function(){
     clearTimeout(timeout);
     timeout = undefined;
+    $(".running").removeClass('running');
+    $(".disabled").removeClass('disabled');
   };
   
   var backward = function(){
     if(timeout !== undefined) { return; }
-    timeout = window.setInterval(updateBack,0)
-  
+    timeout = window.setInterval(updateBack,0);
+    $("#backward").addClass('running');  
+    $("#forward").addClass('disabled');
   };
   
   $("#forward").click(forward);

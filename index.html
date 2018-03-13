@@ -1,15 +1,27 @@
 <html>
   <head>
     <title>Langton's Ant</title>
+    <link href="https://fonts.googleapis.com/css?family=Mina:400,700" rel="stylesheet">
+    <link href="index.css" type="text/css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="ant.js"></script>
   </head>
   <body>
-    <canvas width=500 height=500 id="grid">
-    </canvas>
-    <br />
-    <button id="forward">Forward</button>
-    <button id="backward">Backward</button>
-    <button id="stop">Stop</button>
+    <div class="container">
+      <div class="ant">
+        <canvas width=500 height=500 id="grid">
+        </canvas>
+        <br />
+        <button id="forward">Forward</button>
+        <button id="backward">Backward</button>
+        <button id="stop">Stop</button>
+      </div>
+      <div class="explanation">
+        <a href="https://en.wikipedia.org/wiki/Langton%27s_ant">Langton's ant</a> is a two-dimensional universal Turing machine with a very simple set 
+        of rules but complex emergent behavior. It was invented by Chris Langton in 1986 
+        and runs on a square lattice of black and white cells. The universality of Langton's 
+        ant was proven in 2000.
+      </div>
+    </div>
   </body>
 </html>
