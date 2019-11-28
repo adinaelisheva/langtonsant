@@ -149,6 +149,7 @@ window.onload = function(){
     timeout = window.setInterval(updateForward,0);
     $("#forward").addClass('running');
     $("#backward").addClass('disabled');
+    $("#stop").removeClass('disabled');
   };
   
   var stop = function(){
@@ -156,6 +157,7 @@ window.onload = function(){
     timeout = undefined;
     $(".running").removeClass('running');
     $(".disabled").removeClass('disabled');
+    $("#stop").addClass('disabled');
   };
   
   var backward = function(){
@@ -163,6 +165,7 @@ window.onload = function(){
     timeout = window.setInterval(updateBack,0);
     $("#backward").addClass('running');  
     $("#forward").addClass('disabled');
+    $("#stop").removeClass('disabled');
   };
   
   $("#forward").click(forward);

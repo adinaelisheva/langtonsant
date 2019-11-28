@@ -17,7 +17,7 @@ button:focus {
   outline: none;
 }
 
-button:active {
+button:not(.disabled):not(.running):active {
   border: 2px solid red;
   padding: 8px 10px;
 }
